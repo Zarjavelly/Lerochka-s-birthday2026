@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Для тебя ❤️</title>
+
+<style>
+
+body{
+font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+text-align:center;
+color:#5a0f2e;
+margin:0;
+padding:0;
+overflow-x:hidden;
+}
+
+h1{
+color:#7a0f3b;
+text-shadow:0 2px 6px rgba(0,0,0,0.15);
+}
+
+h2{
+color:#8a1c48;
+}
+
+h3{
+color:#7a1f3d;
+}
+
+p{
+color:#5a0f2e;
+font-weight:500;
+}
+
+.page{
+display:none;
+padding:80px 20px;
+}
+
+.active{
+display:block;
+}
+
+button{
+padding:15px 30px;
+font-size:18px;
+border:none;
+border-radius:30px;
+background:linear-gradient(135deg,#7a0f3b,#b81f5a);
+color:white;
+cursor:pointer;
+margin-top:30px;
+font-weight:bold;
+box-shadow:0 6px 18px rgba(0,0,0,0.25);
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+img{
+width:60%;
+max-width:500px;
+border-radius:20px;
+margin:20px 0;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+animation:fade 1s;
+}
+
+@keyframes fade{
+from{opacity:0; transform:scale(0.95);}
+to{opacity:1; transform:scale(1);}
+}
+
+.card{
+background:rgba(255,255,255,0.35);
+padding:20px;
+margin:10px auto;
+max-width:420px;
+border-radius:20px;
+opacity:0;
+transform:translateY(30px);
+transition:0.6s;
+color:#5a0f2e;
+font-weight:600;
+}
+
+.card.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.heart{
+position:fixed;
+top:-10px;
+font-size:20px;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh);
+opacity:0;
+}
+}
+
+.gift{
+font-size:70px;
+animation:bounce 1s infinite alternate;
+}
+
+@keyframes bounce{
+from{transform:translateY(0);}
+to{transform:translateY(-15px);}
+}
+
+#timer{
+font-size:28px;
+margin-top:20px;
+color:#7a0f3b;
+font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+
+<div class="page active" id="page1">
+
+<img src="photo1.png">
+
+<h1>Я сделал для тебя маленький сюрприз ❤️</h1>
+<p>Надеюсь тебе понравится это маленькое путешествие</p>
+
+<button onclick="nextPage(2)">Начать</button>
+
+</div>
+
+
+<!-- PAGE 2 -->
+
+<div class="page" id="page2">
+
+<img src="photo2.png">
+
+<h1>Всё началось 4 октября 2024 года...</h1>
+
+<p>
+И тогда я ещё не знал,<br>
+что этот день станет началом<br>
+чего-то очень особенного
+</p>
+
+<button onclick="nextPage(3)">Продолжить</button>
+
+</div>
+
+
+<!-- PAGE 3 -->
+
+<div class="page" id="page3">
+
+<img src="photo3.jpg">
+
+<h1>Киси, ты просто волшебная</h1>
+
+<div class="card">Ты умеешь делать обычные дни особенными</div>
+<div class="card">Твоя улыбка способна мгновенно поднять настроение</div>
+<div class="card">Рядом с тобой я забываю про всё на свете</div>
+
+<button onclick="showNextCard()">А ещё</button>
+
+<br>
+
+<button onclick="nextPage(4)">Дальше</button>
+
+</div>
+
+
+<!-- PAGE 4 -->
+
+<div class="page" id="page4">
+
+<img src="photo4.jpg">
+
+<h1>10 причин почему я тебя люблю</h1>
+<p>(но далекооо не все)</p>
+
+<div class="card">1. Твоя улыбка</div>
+<div class="card">2. Твой голос</div>
+<div class="card">3. Твои честни и иногда хитри глазки</div>
+<div class="card">4. Твоя доброта</div>
+<div class="card">5. Твоя искренность</div>
+<div class="card">6. Твои золотые ручки</div>
+<div class="card">7. Твоя попи (и мокри и сухи)</div>
+<div class="card">8. Твой кутни запах</div>
+<div class="card">9. Наши шкодности</div>
+<div class="card">10. Наши путешествия</div>
+<div class="card">И самое главное...</div>
+<div class="card">Потому что ты - это ты!</div>
+
+<button onclick="showNextCard()">А ещё!?</button>
+
+<br>
+
+<button onclick="nextPage(5)">Последняя страница</button>
+
+</div>
+
+
+<!-- PAGE 5 -->
+
+<div class="page" id="page5">
+
+<img src="photo5.jpg">
+
+<h1>С Днём Рождения ❤️</h1>
+
+<p>
+Самая красивая<br>
+самая удивительная<br>
+и самая любимая девочка
+</p>
+
+<h2>Я тебя люблю, киси моя</h2>
+
+<h3>Киси встретятся уже через:</h3>
+
+<div id="timer"></div>
+
+<br><br>
+
+<button onclick="openGift()">Открыть подарок 🎁</button>
+
+<div id="giftBox" style="display:none;margin-top:30px;font-size:24px;">
+🎉 Сюрприз! 🎉
+<br><br>
+Мой подарочек, помимо тех, которые придут уже скоро —
+<br>
+это конечо же 1000 поцелуйчиков, массажик, и бесконечная любоффф ❤️
+</div>
+
+</div>
+
+
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mp3">
+</audio>
+
+
+<script>
+
+let cardIndex = 0;
+
+function nextPage(page){
+
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById('page'+page).classList.add('active');
+
+cardIndex = 0;
+
+if(page==5){
+startHearts();
+}
+
+}
+
+function showNextCard(){
+
+let cards=document.querySelectorAll(".active .card");
+
+if(cardIndex < cards.length){
+
+cards[cardIndex].classList.add("show");
+cardIndex++;
+
+}
+
+}
+
+function startHearts(){
+
+setInterval(()=>{
+
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(20+Math.random()*20)+"px";
+heart.style.animationDuration=(3+Math.random()*3)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),6000);
+
+},300);
+
+}
+
+function openGift(){
+
+let box=document.getElementById("giftBox");
+box.style.display="block";
+box.classList.add("gift");
+
+}
+
+document.body.addEventListener("click", function(){
+document.getElementById("music").play();
+},{once:true});
+
+
+const meetingDate = new Date("April 30, 2026 00:00:00").getTime();
+
+setInterval(()=>{
+
+const now = new Date().getTime();
+const distance = meetingDate - now;
+
+const days = Math.floor(distance/(1000*60*60*24));
+const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+const seconds = Math.floor((distance%(1000*60))/1000);
+
+document.getElementById("timer").innerHTML =
+days+" дней "+hours+" часов "+minutes+" минут "+seconds+" секунд";
+
+},1000);
+
+</script>
+
+</body>
+</html>
